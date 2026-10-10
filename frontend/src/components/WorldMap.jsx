@@ -25,7 +25,6 @@ export default function WorldMap({ devTools }) {
           <span className="badge-label">PROGRESS</span>
           <span className="badge-count">{totalCleared} / 30 Gates</span>
         </div>
-        <Link to="/leaderboard" className="stone-btn small">🏆 Leaderboard</Link>
       </header>
 
       <main className="matrix-container">

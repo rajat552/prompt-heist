@@ -28,7 +28,7 @@ export default function LandingPage() {
   };
 
   const newGame = async () => {
-    if (window.confirm('Start a new game? Your current run stays on the leaderboard.')) {
+    if (window.confirm('Start a new game? Your current campaign will be reset.')) {
       await game.resetAll();
     }
   };
@@ -46,7 +46,7 @@ export default function LandingPage() {
 
         {USE_MOCK && (
           <p className="preview-note" role="note">
-            <b>Client Preview Mode:</b> Running in-browser mock rules. Connect to FastAPI backend for live Gemma 4 inference & global leaderboard.
+            <b>Client Preview Mode:</b> Running in-browser mock rules. Connect to FastAPI backend for live Gemma 4 inference.
           </p>
         )}
 
@@ -61,7 +61,6 @@ export default function LandingPage() {
             <Link className="stone-btn big" to="/world">
               {started ? 'Continue Campaign ›' : 'Enter Mission Matrix ›'}
             </Link>
-            <Link className="stone-btn" to="/leaderboard">🏆 Hall of Phantoms</Link>
             <button type="button" className="stone-btn secondary" onClick={newGame}>Reset Campaign</button>
           </div>
         ) : (
@@ -82,7 +81,6 @@ export default function LandingPage() {
               <button type="submit" className="stone-btn big" disabled={!name.trim() || busy}>
                 {busy ? 'Initiating Breach…' : 'Initialize Mission ›'}
               </button>
-              <Link className="stone-btn" to="/leaderboard">🏆 Hall of Phantoms</Link>
             </div>
           </form>
         )}

@@ -3,7 +3,6 @@ import LandingPage from './pages/LandingPage.jsx';
 import WorldMapPage from './pages/WorldMapPage.jsx';
 import KingdomPage from './pages/KingdomPage.jsx';
 import GameplayPage from './pages/GameplayPage.jsx';
-import LeaderboardPage from './pages/LeaderboardPage.jsx';
 import { useGame } from './hooks/useGameState.jsx';
 
 // With the real backend, progress lives on the server, so nothing can be shown until it has loaded
@@ -26,8 +25,8 @@ function BackendGate({ children }) {
       </main>
     );
   }
-  // No game yet (first visit, or a new game was chosen): everything except the title screen and the leaderboard needs a name first.
-  if (!game.hasGame && pathname !== '/' && pathname !== '/leaderboard') return <Navigate to="/" replace />;
+  // No game yet (first visit, or a new game was chosen): everything except the title screen needs a name first.
+  if (!game.hasGame && pathname !== '/') return <Navigate to="/" replace />;
   return children;
 }
 
@@ -39,7 +38,6 @@ export default function App() {
         <Route path="/world" element={<WorldMapPage />} />
         <Route path="/kingdom/:id" element={<KingdomPage />} />
         <Route path="/play/:id/:level" element={<GameplayPage />} />
-        <Route path="/leaderboard" element={<LeaderboardPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BackendGate>

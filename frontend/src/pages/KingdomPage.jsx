@@ -55,7 +55,6 @@ export default function KingdomPage() {
           <span className="badge-label">SCORE</span>
           <span className="badge-score">{totalScore.toLocaleString()}</span>
         </div>
-        <Link to="/leaderboard" className="stone-btn small">🏆 Leaderboard</Link>
       </header>
 
       <main className="ladder-container">
