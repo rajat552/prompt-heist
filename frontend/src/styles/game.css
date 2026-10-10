@@ -7,7 +7,7 @@
 }
 * { box-sizing: border-box; }
 html, body, #root { height: 100%; }
-body { margin: 0; background: #0a0d14; color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.35; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: #2a1a0c; color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.35; -webkit-font-smoothing: antialiased; }
 button, textarea { font-family: inherit; }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3 { font-family: var(--font-display); margin: 0; }
@@ -144,21 +144,11 @@ blockquote cite { display: block; font-family: var(--font-display); font-style: 
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0a0d14;
+  background-color: #2a1a0c;
   background-image:
-    radial-gradient(ellipse 90% 50% at 50% -5%, rgba(56, 189, 248, 0.16) 0%, transparent 70%),
-    radial-gradient(circle 800px at 0% 100%, rgba(43, 127, 196, 0.08) 0%, transparent 60%),
-    radial-gradient(circle 800px at 100% 100%, rgba(123, 63, 168, 0.07) 0%, transparent 60%),
-    radial-gradient(circle at 1px 1px, rgba(136, 192, 208, 0.15) 1.2px, transparent 0),
-    linear-gradient(to right, rgba(136, 192, 208, 0.038) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(136, 192, 208, 0.038) 1px, transparent 1px);
-  background-size:
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    44px 44px,
-    44px 44px,
-    44px 44px;
+    radial-gradient(ellipse 90% 50% at 50% 0%, rgba(232, 193, 63, 0.15) 0%, transparent 70%),
+    radial-gradient(circle 800px at 0% 100%, rgba(122, 75, 36, 0.25) 0%, transparent 60%),
+    radial-gradient(circle 800px at 100% 100%, rgba(90, 48, 18, 0.25) 0%, transparent 60%);
 }
 .landing-art { position: absolute; inset: 0; width: 100%; height: 100%; }
 .landing-card {
@@ -235,61 +225,47 @@ blockquote cite { display: block; font-family: var(--font-display); font-style: 
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  background-color: #0a0d14;
+  background-color: #24160c;
   background-image:
-    radial-gradient(ellipse 90% 50% at 50% -5%, rgba(56, 189, 248, 0.16) 0%, transparent 70%),
-    radial-gradient(circle 800px at 0% 100%, rgba(43, 127, 196, 0.08) 0%, transparent 60%),
-    radial-gradient(circle 800px at 100% 100%, rgba(123, 63, 168, 0.07) 0%, transparent 60%),
-    radial-gradient(circle at 1px 1px, rgba(136, 192, 208, 0.15) 1.2px, transparent 0),
-    linear-gradient(to right, rgba(136, 192, 208, 0.038) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(136, 192, 208, 0.038) 1px, transparent 1px);
-  background-size:
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    44px 44px,
-    44px 44px,
-    44px 44px;
-  background-attachment: fixed;
-  color: #e5e9f0;
+    radial-gradient(ellipse 90% 50% at 50% 0%, rgba(232, 193, 63, 0.15) 0%, transparent 70%),
+    radial-gradient(circle 800px at 0% 100%, rgba(122, 75, 36, 0.25) 0%, transparent 60%);
+  color: #fff6dc;
 }
 .encounter-grid-terminal { flex: 1; max-width: 1280px; width: 100%; margin: 0 auto; padding: 18px 16px; display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 20px; align-items: start; }
 .terminal-dossier-card {
-  background: linear-gradient(175deg, rgba(28, 35, 47, 0.92) 0%, rgba(16, 21, 30, 0.98) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-top: 4px solid var(--accent-color, #88c0d0);
+  background: linear-gradient(180deg, #341e0f 0%, #221307 100%);
+  border: 2px solid #6b401e;
+  border-top: 4px solid var(--accent-color, #c8921c);
   border-radius: 12px;
   padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
 }
 .dossier-tag-line { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
-.dossier-pill { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; color: #88c0d0; }
-.guard-dossier-main { display: flex; align-items: center; gap: 12px; background: #252b37; padding: 12px; border-radius: 8px; border: 1px solid #3b4252; }
+.dossier-pill { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; color: #ffd34d; }
+.guard-dossier-main { display: flex; align-items: center; gap: 12px; background: rgba(122, 75, 36, 0.22); padding: 12px; border-radius: 8px; border: 2px solid #7a4b24; }
 .guard-avatar-large { font-size: 34px; line-height: 1; }
-.guard-name-title { font-size: 18px; margin: 0; color: #eceff4; font-family: var(--font-display); }
-.guard-role-subtitle { font-size: 12px; color: #88c0d0; margin: 2px 0 0; }
-.intel-section { display: flex; flex-direction: column; gap: 8px; font-size: 13px; }
+.guard-name-title { font-size: 18px; margin: 0; color: #fff8e1; font-family: var(--font-display); }
+.guard-role-subtitle { font-size: 13px; color: #e8c13f; margin: 2px 0 0; }
+.intel-section { display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
 .intel-row { display: flex; flex-direction: column; gap: 2px; }
-.intel-key { font-size: 11px; font-weight: 800; color: #81a1c1; text-transform: uppercase; letter-spacing: 0.08em; }
-.intel-val { color: #d8dee9; line-height: 1.4; }
-.opening-box { background: #252b37; padding: 10px; border-radius: 6px; border-left: 3px solid var(--accent-color, #88c0d0); }
-.opening-quote { font-style: italic; color: #eceff4; margin: 4px 0 0; font-size: 13.5px; }
-.tutorial-callout { background: rgba(235, 203, 139, 0.15); border: 1px solid #ebcb8b; border-radius: 6px; padding: 8px 10px; font-size: 12.5px; color: #ebcb8b; }
-.boss-adaptation-card { background: #252b37; border: 1px solid #b48ead; border-radius: 6px; padding: 10px; display: flex; flex-direction: column; gap: 6px; }
-.adapt-header-bar { display: flex; justify-content: space-between; font-size: 11px; font-weight: 800; color: #b48ead; }
-.adapt-status-pill { background: #b48ead; color: #14171d; padding: 1px 6px; border-radius: 4px; font-size: 9px; }
-.adapt-summary { font-size: 12px; color: #d8dee9; margin: 0; }
+.intel-key { font-size: 11px; font-weight: 800; color: #e8c13f; text-transform: uppercase; letter-spacing: 0.08em; }
+.intel-val { color: #f5e4c6; line-height: 1.45; }
+.opening-box { background: rgba(25, 13, 5, 0.55); padding: 10px 12px; border-radius: 6px; border-left: 3px solid var(--accent-color, #c8921c); }
+.opening-quote { font-style: italic; color: #fff8e1; margin: 4px 0 0; font-size: 14px; }
+.tutorial-callout { background: #3d260a; border: 1.5px solid #d97706; border-radius: 6px; padding: 8px 10px; font-size: 13px; color: #ffeab0; }
+.boss-adaptation-card { background: #35153b; border: 1.5px solid #b57cf0; border-radius: 6px; padding: 10px; display: flex; flex-direction: column; gap: 6px; }
+.adapt-header-bar { display: flex; justify-content: space-between; font-size: 11px; font-weight: 800; color: #f5e6ff; }
+.adapt-status-pill { background: #b57cf0; color: #1a0a24; padding: 1px 6px; border-radius: 4px; font-size: 9px; font-weight: 800; }
+.adapt-summary { font-size: 13px; color: #f5e6ff; margin: 0; }
 .learned-tactics-list { display: flex; flex-direction: column; gap: 4px; }
-.tactic-chip { font-size: 11px; padding: 4px 8px; border-radius: 4px; background: #1e232d; border: 1px solid #3b4252; display: flex; justify-content: space-between; }
-.tactic-chip.blocked { border-color: #bf616a; color: #bf616a; }
-.tactic-chip.open { border-color: #a3be8c; color: #a3be8c; }
+.tactic-chip { font-size: 11px; padding: 4px 8px; border-radius: 4px; background: rgba(25, 13, 5, 0.6); border: 1px solid #5a3518; display: flex; justify-content: space-between; }
+.tactic-chip.blocked { border-color: #b3262d; color: #fca5a5; }
+.tactic-chip.open { border-color: #3a8a47; color: #86efac; }
 .terminal-chat-card { display: flex; flex-direction: column; gap: 12px; }
-.resolving { font-size: 13px; color: #ebcb8b; font-style: italic; margin: 4px 0; text-align: center; }
+.resolving { font-size: 14px; color: #ffd34d; font-style: italic; margin: 4px 0; text-align: center; }
 
 @media (max-width: 860px) {
   .encounter-grid-terminal { grid-template-columns: 1fr; }

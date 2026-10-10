@@ -97,7 +97,7 @@ export default function KingdomPage() {
                         {lv.boss && <span className="tag-boss">👑 BOSS</span>}
                         {lv.checkpoint && <span className="tag-checkpoint">🚩 CHECKPOINT</span>}
                       </div>
-                      <span className="gate-target">📍 {k.places[lv.n - 1]}</span>
+                      <span className="gate-target">{k.places[lv.n - 1]}</span>
                     </div>
 
                     <div className={`gate-status-pill ${st}`}>
@@ -120,7 +120,7 @@ export default function KingdomPage() {
                 </div>
 
                 <h2 className="dossier-title">{L.name}</h2>
-                <div className="dossier-location">📍 Target Location: <b>{k.places[L.n - 1]}</b></div>
+                <div className="dossier-location">Target Location: <b>{k.places[L.n - 1]}</b></div>
 
                 <div className="guardian-profile">
                   <div className="guardian-avatar-badge">🤖</div>
