@@ -1,0 +1,34 @@
+# Render Blueprint: ONE web service that serves the whole game (the built frontend in frontend/dist and the API).
+# No Docker needed: Render's native Python runtime installs the backend and runs it.
+# Deploy: Render dashboard -> New -> Blueprint -> pick this repository. Step by step: docs/DEPLOY.md.
+#
+# The model: Render has no GPU, so Gemma runs on Ollama's cloud (https://ollama.com) and the backend calls it.
+# That is why the only value you must type in Render is OLLAMA_API_KEY (your own key from
+# https://ollama.com/settings/keys). Everything else is pre-filled. With this, the game keeps working
+# when your laptop is off.
+#
+# CAUTION: every level was tuned on the small local model gemma4:e2b. gemma4:31b is a much bigger model
+# and may play differently (some levels easier or harder). After the first deploy, run
+#   OLLAMA_HOST=https://ollama.com OLLAMA_API_KEY=... OLLAMA_MODEL=gemma4:31b python tools/level_trials.py all 8
+# and read docs/DEPLOY.md before the demo.
+services:
+  - type: web
+    name: prompt-heist
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.app.main:create_app --factory --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: OLLAMA_HOST
+        value: https://ollama.com
+      - key: OLLAMA_MODEL       # the hosted Gemma 4 on Ollama's cloud. Use gemma4:e2b if you run your own Ollama.
+        value: gemma4:31b
+      - key: OLLAMA_API_KEY     # SECRET: paste it in the Render dashboard. Never commit it.
+        sync: false
+      - key: OLLAMA_TIMEOUT_SECONDS
+        value: "90"
+      - key: DATABASE_PATH      # free instances have no persistent disk: scores reset on every deploy or restart
+        value: /tmp/prompt_heist.db

@@ -1,0 +1,20 @@
+Prompt_Heist_Project_Documentation.docx
+Hemanth/
+game_plan.txt
+
+# Secrets and local config
+.env
+
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+
+# Local SQLite database
+*.db
+
+# Frontend (installed packages and build output)
+node_modules/
+# frontend/dist is committed on purpose: the deployed service serves it, and Render then needs no Node.js. Rebuild with: cd frontend && VITE_USE_BACKEND=true npm run build
+frontend/.env
+frontend/.env.local
