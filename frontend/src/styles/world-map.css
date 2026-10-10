@@ -1,12 +1,38 @@
 /* ── Streamlined Mission Matrix & Kingdom Security Ladder ── */
 
-/* Matrix View Layout */
+/* Matrix View & Security Ladder Layout */
 .world-matrix-view,
 .kingdom-ladder-view {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  background: #14171d;
+  background-color: #0a0d14;
+  background-image:
+    /* Top luminous command-center ambient glow */
+    radial-gradient(ellipse 90% 50% at 50% -5%, rgba(56, 189, 248, 0.16) 0%, transparent 70%),
+    /* Tactical corner ambient accents */
+    radial-gradient(circle 800px at 0% 100%, rgba(43, 127, 196, 0.08) 0%, transparent 60%),
+    radial-gradient(circle 800px at 100% 100%, rgba(123, 63, 168, 0.07) 0%, transparent 60%),
+    /* Micro grid intersection dots */
+    radial-gradient(circle at 1px 1px, rgba(136, 192, 208, 0.15) 1.2px, transparent 0),
+    /* Cyber matrix orthogonal coordinate lines */
+    linear-gradient(to right, rgba(136, 192, 208, 0.038) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(136, 192, 208, 0.038) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    44px 44px,
+    44px 44px,
+    44px 44px;
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+  background-attachment: fixed;
   color: #e5e9f0;
   font-family: var(--font-body, system-ui, sans-serif);
 }
@@ -16,20 +42,27 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 16px;
-  background: #1e232d;
-  border-bottom: 2px solid #2e3440;
+  padding: 10px 18px;
+  background: rgba(14, 18, 25, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(136, 192, 208, 0.22);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(136, 192, 208, 0.1);
   flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 20;
 }
 
 .operative-badge {
   display: flex;
   flex-direction: column;
-  background: #252b37;
-  border: 1px solid #3b4252;
+  background: rgba(26, 33, 44, 0.9);
+  border: 1px solid rgba(136, 192, 208, 0.2);
   border-radius: 6px;
   padding: 4px 10px;
   font-size: 13px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .badge-label {
@@ -68,21 +101,25 @@
 
 .matrix-title-banner {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 26px;
+  position: relative;
 }
 
 .matrix-title-banner h2 {
   font-family: var(--font-display, serif);
-  font-size: 26px;
-  letter-spacing: 0.08em;
+  font-size: 28px;
+  letter-spacing: 0.1em;
   color: #88c0d0;
   margin: 0 0 6px;
+  text-shadow: 0 0 24px rgba(136, 192, 208, 0.45), 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .matrix-title-banner p {
-  color: #d8dee9;
-  font-size: 15px;
+  color: #a4b3c6;
+  font-size: 14.5px;
+  letter-spacing: 0.04em;
   margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
 }
 
 /* Kingdoms Grid */
@@ -93,26 +130,52 @@
 }
 
 .kingdom-card {
-  background: #1e232d;
-  border: 1px solid #2e3440;
+  background: linear-gradient(175deg, rgba(28, 35, 47, 0.9) 0%, rgba(16, 21, 30, 0.96) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-top: 4px solid var(--accent-color, #88c0d0);
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.18s ease, border-color 0.18s ease;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+
+.kingdom-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle at 100% 0%, var(--accent-color, #88c0d0) 0%, transparent 70%);
+  opacity: 0.14;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.kingdom-card.unlocked:hover::before {
+  opacity: 0.3;
 }
 
 .kingdom-card.unlocked:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   border-color: var(--accent-color, #88c0d0);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 22px -4px var(--accent-color, #88c0d0);
+}
+
+.kingdom-card.cleared {
+  border-top-color: #a3be8c;
 }
 
 .kingdom-card.locked {
-  opacity: 0.65;
-  filter: grayscale(0.6);
+  opacity: 0.6;
+  filter: grayscale(0.65);
 }
 
 .card-header {
@@ -265,31 +328,34 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  background: #1e232d;
-  border: 1px solid #2e3440;
+  background: linear-gradient(175deg, rgba(28, 35, 47, 0.85) 0%, rgba(16, 21, 30, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   padding: 12px 14px;
   color: #eceff4;
   cursor: pointer;
   text-align: left;
-  transition: all 0.15s ease;
+  transition: all 0.18s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .gate-row-btn:hover:not(.locked) {
-  background: #252b37;
+  background: linear-gradient(175deg, rgba(38, 48, 64, 0.95) 0%, rgba(22, 29, 41, 0.98) 100%);
   border-color: #88c0d0;
   transform: translateX(4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), 0 0 12px -2px rgba(136, 192, 208, 0.3);
 }
 
 .gate-row-btn.selected {
-  background: #252b37;
+  background: linear-gradient(175deg, rgba(38, 48, 64, 0.95) 0%, rgba(22, 29, 41, 0.98) 100%);
   border-color: #88c0d0;
-  box-shadow: 0 0 0 2px rgba(136, 192, 208, 0.3);
+  box-shadow: 0 0 0 2px rgba(136, 192, 208, 0.35), 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .gate-row-btn.locked {
-  opacity: 0.55;
+  opacity: 0.5;
   cursor: not-allowed;
+  filter: grayscale(0.5);
 }
 
 .gate-number-badge {
@@ -376,14 +442,16 @@
 }
 
 .gate-dossier-card {
-  background: #1e232d;
-  border: 1px solid #3b4252;
-  border-radius: 10px;
+  background: linear-gradient(175deg, rgba(28, 35, 47, 0.92) 0%, rgba(16, 21, 30, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
   padding: 22px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .dossier-header {
