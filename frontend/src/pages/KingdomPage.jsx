@@ -40,10 +40,17 @@ export default function KingdomPage() {
   };
 
   return (
-    <div className="kingdom-ladder-view" style={{ '--accent-color': k.colors.primary }}>
+    <div
+      className="kingdom-ladder-view"
+      style={{
+        '--accent-color': k.colors.primary,
+        '--accent-dark': k.colors.dark,
+        '--accent-light': k.colors.accent,
+      }}
+    >
       <header className="top-bar matrix-header">
         <Link to="/world" className="stone-btn small">‹ Mission Matrix</Link>
-        <div className="operative-badge">
+        <div className="operative-badge sector-badge">
           <span className="badge-label">SECTOR</span>
           <span className="badge-name">{k.name}</span>
         </div>
@@ -90,10 +97,10 @@ export default function KingdomPage() {
                         {lv.boss && <span className="tag-boss">👑 BOSS</span>}
                         {lv.checkpoint && <span className="tag-checkpoint">🚩 CHECKPOINT</span>}
                       </div>
-                      <span className="gate-target">{k.places[lv.n - 1]}</span>
+                      <span className="gate-target">📍 {k.places[lv.n - 1]}</span>
                     </div>
 
-                    <div className="gate-status-pill">
+                    <div className={`gate-status-pill ${st}`}>
                       {st === 'completed' ? 'CLEARED' : st === 'available' ? 'ACTIVE' : 'LOCKED'}
                     </div>
                   </button>
@@ -113,7 +120,7 @@ export default function KingdomPage() {
                 </div>
 
                 <h2 className="dossier-title">{L.name}</h2>
-                <div className="dossier-location">Target Location: <b>{k.places[L.n - 1]}</b></div>
+                <div className="dossier-location">📍 Target Location: <b>{k.places[L.n - 1]}</b></div>
 
                 <div className="guardian-profile">
                   <div className="guardian-avatar-badge">🤖</div>
@@ -146,7 +153,7 @@ export default function KingdomPage() {
                 <div className="dossier-actions">
                   <button
                     type="button"
-                    className="stone-btn big full-width"
+                    className={`stone-btn big full-width ${statusOf(L.n) === 'completed' ? 'cleared-btn' : L.boss ? 'boss-btn' : ''}`}
                     disabled={statusOf(L.n) === 'locked'}
                     onClick={begin}
                   >

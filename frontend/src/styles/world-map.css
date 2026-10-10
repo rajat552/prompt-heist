@@ -37,6 +37,17 @@
   font-family: var(--font-body, system-ui, sans-serif);
 }
 
+/* Distinct Sector Ambient Glow for Ladder View */
+.kingdom-ladder-view {
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% -5%, var(--accent-color, rgba(56, 189, 248, 0.22)) 0%, transparent 68%),
+    radial-gradient(circle 800px at 0% 100%, var(--accent-dark, rgba(43, 127, 196, 0.14)) 0%, transparent 60%),
+    radial-gradient(circle 800px at 100% 100%, rgba(123, 63, 168, 0.07) 0%, transparent 60%),
+    radial-gradient(circle at 1px 1px, rgba(136, 192, 208, 0.16) 1.2px, transparent 0),
+    linear-gradient(to right, rgba(136, 192, 208, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(136, 192, 208, 0.04) 1px, transparent 1px);
+}
+
 /* Common Header Bar */
 .matrix-header {
   display: flex;
@@ -65,6 +76,19 @@
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+.operative-badge.sector-badge {
+  border-left: 3px solid var(--accent-color, #38bdf8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.operative-badge.domain-badge .badge-label {
+  color: var(--accent-light, #9bdcff);
+}
+
+.operative-badge.score-badge {
+  border-left: 3px solid #ebcb8b;
+}
+
 .badge-label {
   font-size: 9px;
   font-weight: 700;
@@ -86,7 +110,8 @@
 }
 
 .score-badge .badge-score {
-  color: #ebcb8b;
+  color: #fcd34d;
+  font-weight: 800;
 }
 
 /* Matrix Container */
@@ -302,20 +327,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 6px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(136, 192, 208, 0.15);
 }
 
 .section-title h3 {
-  font-size: 14px;
-  letter-spacing: 0.1em;
-  color: #88c0d0;
+  font-size: 13.5px;
+  letter-spacing: 0.12em;
+  color: var(--accent-light, #9bdcff);
+  text-shadow: 0 0 14px var(--accent-color, rgba(56, 189, 248, 0.45));
+  font-weight: 800;
   margin: 0;
 }
 
 .ladder-progress {
   font-size: 12px;
-  font-weight: 700;
-  color: #ebcb8b;
+  font-weight: 800;
+  color: #fde68a;
+  background: rgba(245, 158, 11, 0.14);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  padding: 3px 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.2);
 }
 
 .gates-list {
@@ -324,38 +358,115 @@
   gap: 10px;
 }
 
+/* ── Gate Row Buttons: Rich Color Variations ── */
 .gate-row-btn {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: linear-gradient(175deg, rgba(28, 35, 47, 0.85) 0%, rgba(16, 21, 30, 0.95) 100%);
+  background: linear-gradient(175deg, rgba(24, 32, 45, 0.88) 0%, rgba(14, 19, 28, 0.96) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 12px 14px;
+  border-radius: 10px;
+  padding: 12px 16px;
   color: #eceff4;
   cursor: pointer;
   text-align: left;
-  transition: all 0.18s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
 }
 
-.gate-row-btn:hover:not(.locked) {
-  background: linear-gradient(175deg, rgba(38, 48, 64, 0.95) 0%, rgba(22, 29, 41, 0.98) 100%);
-  border-color: #88c0d0;
+/* 1. CLEARED / COMPLETED GATE (Emerald Mint Harmony) */
+.gate-row-btn.completed {
+  border-color: rgba(72, 187, 120, 0.3);
+  border-left: 4px solid #48bb78;
+  background: linear-gradient(90deg, rgba(72, 187, 120, 0.12) 0%, rgba(18, 25, 36, 0.95) 45%);
+}
+
+.gate-row-btn.completed .gate-number-badge {
+  background: linear-gradient(135deg, #48bb78 0%, #2f855a 100%);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 900;
+  box-shadow: 0 0 12px rgba(72, 187, 120, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+}
+
+.gate-row-btn.completed:hover {
+  background: linear-gradient(90deg, rgba(72, 187, 120, 0.18) 0%, rgba(26, 37, 50, 0.98) 50%);
+  border-color: #48bb78;
   transform: translateX(4px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), 0 0 12px -2px rgba(136, 192, 208, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 0 14px -2px rgba(72, 187, 120, 0.35);
 }
 
+.gate-status-pill.completed {
+  background: rgba(72, 187, 120, 0.16);
+  color: #68d391;
+  border: 1px solid rgba(72, 187, 120, 0.4);
+  font-weight: 800;
+  box-shadow: 0 0 8px rgba(72, 187, 120, 0.2);
+}
+
+/* 2. ACTIVE GATE (Vibrant Sector Cyber Glow) */
+.gate-row-btn.available {
+  border-color: rgba(56, 189, 248, 0.35);
+  border-left: 4px solid var(--accent-color, #38bdf8);
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, rgba(20, 28, 40, 0.95) 45%);
+}
+
+.gate-row-btn.available .gate-number-badge {
+  background: linear-gradient(135deg, var(--accent-color, #38bdf8) 0%, #1e40af 100%);
+  color: #ffffff;
+  font-weight: 900;
+  box-shadow: 0 0 14px var(--accent-color, rgba(56, 189, 248, 0.5));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.gate-row-btn.available:hover {
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.18) 0%, rgba(26, 38, 54, 0.98) 50%);
+  border-color: var(--accent-color, #38bdf8);
+  transform: translateX(4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 0 16px -2px var(--accent-color, rgba(56, 189, 248, 0.4));
+}
+
+.gate-status-pill.available {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+  font-weight: 800;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+}
+
+/* 3. SELECTED GATE (Enhanced Active Focus) */
 .gate-row-btn.selected {
-  background: linear-gradient(175deg, rgba(38, 48, 64, 0.95) 0%, rgba(22, 29, 41, 0.98) 100%);
-  border-color: #88c0d0;
-  box-shadow: 0 0 0 2px rgba(136, 192, 208, 0.35), 0 8px 20px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.22) 0%, rgba(24, 34, 48, 0.98) 50%);
+  border-color: var(--accent-color, #38bdf8);
+  border-left: 5px solid var(--accent-color, #38bdf8);
+  box-shadow: 0 0 24px -2px var(--accent-color, rgba(56, 189, 248, 0.38)), inset 0 0 16px rgba(56, 189, 248, 0.1);
+  transform: translateX(4px);
 }
 
+.gate-row-btn.selected .gate-number-badge {
+  background: linear-gradient(135deg, var(--accent-light, #9bdcff) 0%, var(--accent-color, #2b7fc4) 100%);
+  color: #0b1320;
+  font-weight: 900;
+  box-shadow: 0 0 16px var(--accent-color, rgba(56, 189, 248, 0.7));
+}
+
+/* 4. LOCKED GATES */
 .gate-row-btn.locked {
-  opacity: 0.5;
+  opacity: 0.42;
   cursor: not-allowed;
   filter: grayscale(0.5);
+  border-left: 3px solid #475569;
+}
+
+.gate-status-pill.locked {
+  background: rgba(100, 116, 139, 0.15);
+  color: #94a3b8;
+  border: 1px solid rgba(100, 116, 139, 0.3);
 }
 
 .gate-number-badge {
@@ -369,16 +480,6 @@
   font-weight: 800;
   font-size: 13px;
   flex-shrink: 0;
-}
-
-.gate-row-btn.completed .gate-number-badge {
-  background: #a3be8c;
-  color: #14171d;
-}
-
-.gate-row-btn.selected .gate-number-badge {
-  background: #88c0d0;
-  color: #14171d;
 }
 
 .gate-meta {
@@ -400,39 +501,48 @@
   font-size: 15px;
 }
 
-.tag-boss {
-  font-size: 10px;
-  font-weight: 800;
-  background: #b48ead;
-  color: #14171d;
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
+/* 5. CHECKPOINT & BOSS TAGS */
 .tag-checkpoint {
   font-size: 10px;
   font-weight: 800;
-  background: #ebcb8b;
-  color: #14171d;
-  padding: 2px 6px;
+  background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+  color: #ffffff;
+  padding: 3px 8px;
   border-radius: 4px;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.45);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tag-boss {
+  font-size: 10px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #c084fc 0%, #7e22ce 100%);
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(192, 132, 252, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .tag-boss.large,
 .tag-checkpoint.large {
   font-size: 11px;
-  padding: 3px 8px;
+  padding: 4px 10px;
 }
 
 .gate-target {
   font-size: 12px;
-  color: #81a1c1;
+  color: #94a3b8;
 }
 
 .gate-status-pill {
   font-size: 10px;
-  font-weight: 700;
-  color: #d8dee9;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 12px;
+  letter-spacing: 0.06em;
 }
 
 /* Dossier Column */
@@ -442,55 +552,97 @@
 }
 
 .gate-dossier-card {
-  background: linear-gradient(175deg, rgba(28, 35, 47, 0.92) 0%, rgba(16, 21, 30, 0.98) 100%);
+  background: linear-gradient(175deg, rgba(24, 32, 45, 0.94) 0%, rgba(13, 17, 25, 0.98) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 22px;
+  border-top: 4px solid var(--accent-color, #38bdf8);
+  border-radius: 14px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  gap: 18px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.6), 0 0 24px -4px var(--accent-color, rgba(56, 189, 248, 0.25));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.gate-dossier-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle at 100% 0%, var(--accent-color, #38bdf8) 0%, transparent 70%);
+  opacity: 0.16;
+  pointer-events: none;
 }
 
 .dossier-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .dossier-tag {
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.12em;
-  color: #88c0d0;
+  color: var(--accent-light, #9bdcff);
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
 }
 
 .dossier-title {
   font-family: var(--font-display, serif);
-  font-size: 24px;
-  color: #eceff4;
+  font-size: 26px;
+  letter-spacing: 0.04em;
+  color: #f8fafc;
+  background: linear-gradient(135deg, #ffffff 40%, var(--accent-light, #9bdcff) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0;
 }
 
 .dossier-location {
-  font-size: 13px;
-  color: #d8dee9;
+  font-size: 13.5px;
+  color: #94a3b8;
+}
+
+.dossier-location b {
+  color: #fbbf24;
+  font-weight: 700;
 }
 
 .guardian-profile {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: #252b37;
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: 1px solid #3b4252;
+  gap: 14px;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--accent-color, #38bdf8);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
 
 .guardian-avatar-badge {
-  font-size: 26px;
+  font-size: 24px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1.5px solid var(--accent-color, #38bdf8);
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--accent-color, rgba(56, 189, 248, 0.25));
 }
 
 .guardian-info {
@@ -499,14 +651,15 @@
 }
 
 .guardian-name {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 15px;
-  color: #eceff4;
+  color: #f8fafc;
 }
 
 .guardian-role {
   font-size: 12px;
-  color: #88c0d0;
+  color: var(--accent-light, #9bdcff);
+  font-weight: 600;
 }
 
 .dossier-briefing {
@@ -517,34 +670,62 @@
 
 .dossier-briefing h4 {
   font-size: 12px;
-  letter-spacing: 0.08em;
-  color: #81a1c1;
+  letter-spacing: 0.12em;
+  color: var(--accent-light, #9bdcff);
   text-transform: uppercase;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .dossier-briefing p {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #e5e9f0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: #e2e8f0;
   margin: 0;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-left: 3px solid var(--accent-color, #38bdf8);
+  padding: 12px 14px;
+  border-radius: 8px;
 }
 
 .intel-box {
-  background: #252b37;
-  border-left: 3px solid #88c0d0;
-  padding: 10px 12px;
-  border-radius: 4px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-left: 4px solid #38bdf8;
+  padding: 11px 14px;
+  border-radius: 8px;
   font-size: 13px;
-  color: #d8dee9;
+  color: #e0f2fe;
 }
 
 .intel-box.warning {
-  border-color: #ebcb8b;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-left: 4px solid #f59e0b;
+  color: #fef3c7;
 }
 
 .intel-box.alert {
-  border-color: #b48ead;
+  background: rgba(192, 132, 252, 0.12);
+  border: 1px solid rgba(192, 132, 252, 0.4);
+  border-left: 4px solid #c084fc;
+  color: #faf5ff;
+}
+
+/* Custom Infiltrate Buttons */
+.stone-btn.cleared-btn {
+  background: linear-gradient(#48bb78, #2f855a 55%, #22543d);
+  border-color: #1c4532;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.4), 0 4px 0 #132f22, 0 8px 18px rgba(72, 187, 120, 0.35);
+}
+
+.stone-btn.boss-btn {
+  background: linear-gradient(#c084fc, #9333ea 55%, #6b21a8);
+  border-color: #4a1575;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.4), 0 4px 0 #3b115e, 0 8px 20px rgba(192, 132, 252, 0.45);
 }
 
 .toast-notification {
