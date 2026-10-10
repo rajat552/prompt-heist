@@ -68,7 +68,7 @@ Verified here: the same layout (only `backend/`, `ai/`, `levels/` and `frontend/
 
 ## Deploy steps (Render Blueprint)
 These steps need a Render account and access to the GitHub repository, which only you can grant.
-1. The repository owner (Shree Santh, `shreesanth-78`) or you, from a fork, signs in at https://dashboard.render.com and connects GitHub (Account Settings, GitHub). Render must be allowed to read this repository.
+1. The repository owner (`rajat552`) or you, from a fork, signs in at https://dashboard.render.com and connects GitHub (Account Settings, GitHub). Render must be allowed to read this repository (`https://github.com/rajat552/prompt-heist`).
 2. **New, then Blueprint**, pick the repository and the branch to deploy (`main` after the pull request is merged).
 3. Render reads `render.yaml`. Fill the three prompts: `OLLAMA_HOST`, `OLLAMA_API_KEY` (only if the Ollama needs one), `OLLAMA_MODEL`. For option D, add `GUARD_STUB` = `1` instead and leave the others empty.
 4. **Apply.** The first build takes several minutes (it builds the frontend and installs the backend).

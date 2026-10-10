@@ -31,7 +31,7 @@ A video file cannot be produced by the assistant, so this is a shot-by-shot plan
 | 3:05 | Lose a level on purpose (three harmless messages) and show the Defeat screen with the respawn text | "Lose three times and you restart from the checkpoint, decided by the server." |
 | 3:25 | Leaderboard | "Scores are kept by the backend." |
 | 3:35 | Browser tab with the GitHub repository: README, `LICENSE`, `levels/trial_results.txt` | "All thirty levels were tuned against the real model with repeated trials. The code is open source, MIT licensed. Gemma 4 is Apache 2.0." |
-| 3:50 | End on the title screen | "Fictional secrets, local model, built today by Team StromBreaker." |
+| 3:50 | End on the title screen | "Fictional secrets, local model, built by Team Zero Spot." |
 
 ## If something goes wrong while recording
 - A reply takes more than 10 seconds: the model was idle and is loading. Wait, or cut it in editing.

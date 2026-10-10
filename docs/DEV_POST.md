@@ -11,9 +11,9 @@ tags: hacktoberfest, ai, opensource, security
 
 **Prompt Heist** is a browser game about prompt injection. You are the Cipher Phantom, and you talk your way past AI guards to learn their secret code. There are **5 kingdoms with 6 gates each, 30 levels in all**. Every guard is a real language model, **Gemma 4**, running locally through Ollama. After each level the game explains what trick worked, why the guard was vulnerable, and how a real application would defend against it.
 
-We are **Team StromBreaker** (Shree Santh B, Mudiam Hemanth Reddy, Aditya S and Kirupashankar Chockkanathan), and we built it during **Hacktoberfest Hack Day, Coimbatore 2026**, for the **Best Open-Source AI Project** challenge, using Gemma 4.
+We are **Team Zero Spot** (Rajat, Hridanshu, and Prince), and we built it for **Hacktoberfest Hack Day NITH GDG 2026**, for the **Best Open-Source AI Project** challenge, using Gemma 4.
 
-Code: https://github.com/shreesanth-78/hacktoberfest-hack-day-coimbatore-x-init-club-and-idea-club (MIT licensed)
+Code: https://github.com/rajat552/prompt-heist (MIT licensed)
 
 Demo video: *[add the link here]*
 
