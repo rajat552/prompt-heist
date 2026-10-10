@@ -38,7 +38,7 @@ def load_env_file(path=ENV_FILE):
 
 
 def _origins_from_env():
-    raw = os.environ.get("CORS_ORIGINS", "http://localhost:5173")
+    raw = os.environ.get("CORS_ORIGINS", "*")
     return [o.strip() for o in raw.split(",") if o.strip()]
 
 
